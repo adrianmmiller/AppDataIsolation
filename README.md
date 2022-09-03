@@ -24,7 +24,7 @@ persist.zygote.app_data_isolation=1
 persist.sys.vold_app_data_isolation_enabled=1
 ```
 
-You can test for these props via terminal before and after module install to see theyre applied corectly via:
+You can test for these props via terminal before and after module install to see theyre applied correctly via:
 
 ```
 getprop persist.zygote.app_data_isolation

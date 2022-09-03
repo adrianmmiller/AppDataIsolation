@@ -36,6 +36,17 @@ The module is designed to be fully reversible and leave no leftovers if you remo
 I was asked to package this module, it is not a method of my making, so please DO NOT ask me questions about the method thanks, nor to provide support if it doesnt do what youre expecting.....all such queries will go directly, with haste, to /dev/null
 
 
+**Please note:** the included LICENSE only covers the module components provided by the excellent work of Zack5tpg's Magisk Module Extended, which is available for here for module creators
+
+https://github.com/Zackptg5/MMT-Extended/
+
+All other work is credited above and **no one may fork or re-present this module as their own for the purposes of trying to monetize this module or its content without all parties permission. The module comes specifically without an overall license for this intent.**
+
+### Project Stats ###
+
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/stylemessiah/AppDataIsolation?label=Release&style=plastic) ![GitHub Release Date](https://img.shields.io/github/release-date/stylemessiah/AppDataIsolation?label=Release%20Date&style=plastic) ![GitHub Releases](https://img.shields.io/github/downloads/stylemessiah/AppDataIsolation/latest/total?label=Downloads%20%28Latest%20Release%29&style=plastic) ![GitHub All Releases](https://img.shields.io/github/downloads/stylemessiah/AppDataIsolation/total?label=Total%20Downloads%20%28All%20Releases%29&style=plastic)
+
+
 ---
 
 Original Article, machine translated to English follows:

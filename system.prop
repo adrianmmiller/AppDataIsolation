@@ -1,0 +1,2 @@
+persist.zygote.app_data_isolation=1
+persist.sys.vold_app_data_isolation_enabled=1

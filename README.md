@@ -1,7 +1,7 @@
 # App Data Isolation
-## An attempt to block access, by other apps, to the private data directories for all supported SDK
+## An attempt to block access, by other apps, to the private data directories for all supported SDK (Android 11+)
 
-This module attempts to block access, by other apps, to the private data directories for all supported SDK, using the information from the original article following this explanation of the modules actions
+This module attempts to block access, by other apps, to the private data directories for all supported SDK (Android 11+), using the information from the original article following this explanation of the modules actions
 
 ### What the module does:
 

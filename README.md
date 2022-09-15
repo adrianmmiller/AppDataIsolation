@@ -1,6 +1,8 @@
 # App Data Isolation
 ## An attempt to block access, by other apps, to the private data directories for all supported API's (30+/Android 11+)
 
+Please read [Known/Suspected Issues](https://github.com/stylemessiah/AppDataIsolation/edit/main/README.md#knownsuspected-issues) below before installing
+
 This module attempts to block access, by other apps, to the private data directories for all supported SDK API's (30+/Android 11+), using the information from the original article following this explanation of the modules actions
 
 ### What the module does:
@@ -41,6 +43,21 @@ I was asked to package this module, it is not a method of my making, so please D
 https://github.com/Zackptg5/MMT-Extended/
 
 All other work is credited above and **no one may fork or re-present this module as their own for the purposes of trying to monetize this module or its content without all parties permission. The module comes specifically without an overall license for this intent.**
+
+
+### Known/Suspected issues
+
+One user has reported the following:
+
+*My device is a Galaxy s20 Ultra (G988U) running android 11.*
+
+*Auto-Rotate completely breaks. Once I disable the module auto-rotate works again.Image caching for apps doesn't work. For example: I cleared 
+Telegrams cache and none of the server icons or peoples profile pictures load. Again, once disabling the module and rebooting the images load.
+Some apps on my homescreen have a grey or completely transparent icon inside of folders. Sometimes it takes a few seconds for the icons to come back, but sometimes they don't at all. This occurs with the OneUI home launcher and Nova launcher.File browsing apps lose permissions to R/W files. I've noticed that when using Root Explorer that when trying to view a text file in its built-in text viewer it tells me along the lines of "Unable to view, your device may not be rooted". This occurs with files on my devices storage as well as in root directories. Same goes for trying to unzip, zip, view any kind of file, etc.*
+
+*These are just some issues I've comes across while using the module. I don't know if they are unintended issues based on my device or if anybody else is having these problems.*
+
+As of yet, no further reports have come in
 
 ### Project Stats ###
 

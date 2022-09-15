@@ -1,7 +1,7 @@
 # App Data Isolation
 ## An attempt to block access, by other apps, to the private data directories for all supported API's (30+/Android 11+)
 
-Please read [Known/Suspected Issues](https://github.com/stylemessiah/AppDataIsolation/edit/main/README.md#knownsuspected-issues) below before installing
+Please read [Known/Suspected Issues](https://github.com/stylemessiah/AppDataIsolation#knownsuspected-issues) below before installing
 
 This module attempts to block access, by other apps, to the private data directories for all supported SDK API's (30+/Android 11+), using the information from the original article following this explanation of the modules actions
 

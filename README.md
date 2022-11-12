@@ -47,7 +47,7 @@ All other work is credited above and **no one may fork or re-present this module
 
 ### WARNING:
 
-Please temporarily disable the module (disable and reboot) before backing up if you use a root backup solution that offers to backup app data, otherwise you will NOT have any app data backed up.
+Please temporarily disable the module (disable and reboot) before backing up if you use a root backup solution that offers to backup app data, otherwise you prolly will NOT have any app data backed up.
 
 ### Project Stats ###
 

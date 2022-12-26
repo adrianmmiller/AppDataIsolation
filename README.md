@@ -1,5 +1,5 @@
 # App Data Isolation
-## An attempt to block access, by other apps, to the private data directories for all supported API's (30+/Android 11+)
+## An attempt to block access, by other apps, to the private data directories for all supported API levels (30+/Android 11+)
 
 Please read [WARNING](https://github.com/stylemessiah/AppDataIsolation#warning) below before installing
 

@@ -3,4 +3,4 @@ name=App Data Isolation (All SDK)
 version=v1.0
 versionCode=1
 author=Stillhard
-description=Attempts to block apps from accessing other apps' private data on Android 11+ (API 30+)
+description=An attempt to block apps from accessing other apps' private data on Android 11+ (API 30+)

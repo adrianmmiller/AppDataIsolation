@@ -71,8 +71,6 @@ This article was transcoded by [Jian Yue SimpRead](http://ksria.com/simpread/), 
  ````
  getprop persist.zygote.app_data_isolation
  getprop persist.sys.vold_app_data_isolation_enabled
-
-
  ````
 
  If the return value is all 1, then congratulations, your system may have enabled data and Android/data isolation. It's not over though, because at this point it might not work as well as you think, let's explore the internal details in the source code:
@@ -86,7 +84,6 @@ This article was transcoded by [Jian Yue SimpRead](http://ksria.com/simpread/), 
              int[] fdsToIgnore, boolean startChildZygote, String instructionSet, String appDataDir,
              boolean isTopApp, String[] pkgDataInfoList, String[] allowlistedDataInfoList,
              boolean bindMountAppDataDirs, boolean bindMountAppStorageDirs)
-
  ````
 
  There are two parameters at the end `bindMountAppDataDirs`, `bindMountAppStorageDirs`, which seem to be related to these two directories, and `allowlistedDataInfoList` may be their whitelist.
@@ -158,10 +155,11 @@ This article was transcoded by [Jian Yue SimpRead](http://ksria.com/simpread/), 
                  startResult = Process.start(/* ... */,
                          allowlistedAppDataInfoMap, bindMountAppsData, bindMountAppStorageDirs,
                          new String[]{PROC_START_SEQ_IDENT + app.getStartSeq()});
-
  ````
 
- Among them bindMountAppStorageDirs is related to mVoldAppDataIsolationEnabled, bindMountAppsData is related to mAppDataIsolationEnabled ```
+ Among them `bindMountAppStorageDirs` is related to `mVoldAppDataIsolationEnabled`, `bindMountAppsData` is related to `mAppDataIsolationEnabled`
+ 
+ ```
      private boolean needsStorageDataIsolation(StorageManagerInternal storageManagerInternal,
              ProcessRecord app) {
          final int mountMode = app.getMountMode();
@@ -179,8 +177,6 @@ This article was transcoded by [Jian Yue SimpRead](http://ksria.com/simpread/), 
                  SystemProperties.getBoolean(ANDROID_APP_DATA_ISOLATION_ENABLED_PROPERTY, true);
          mVoldAppDataIsolationEnabled = SystemProperties.getBoolean(
                  ANDROID_VOLD_APP_DATA_ISOLATION_ENABLED_PROPERTY, false);
-
-
  ````
 
  They are all related to system properties:
@@ -201,15 +197,23 @@ This article was transcoded by [Jian Yue SimpRead](http://ksria.com/simpread/), 
  ````
  setprop persist.zygote.app_data_isolation 1
  setprop persist.sys.vold_app_data_isolation_enabled 1
-
-
  ````
 
  The persist property can be retained after restart, so just setprop directly.
+\
+\
+ After restarting, it can be observed that the isolation of Android/data takes effect, and the package name other than yourself under /sdcard/Android/data cannot be found through stat (stat corresponds to the package name path prompting that the file does not exist), but the file under /data/data seems to still be It does not take effect, but still get stat results.
 
- After restarting, it can be observed that the isolation of Android/data takes effect, and the package name other than yourself under /sdcard/Android/data cannot be found through stat (stat corresponds to the package name path prompting that the file does not exist), but the file under /data/data seems to still be It does not take effect, but still get stat results. Three terminals were tested here: Terminal Emulator (API 22), JuiceSSH (API 29), MT Manager (API 26), and the results were consistent.
+Three terminals were tested here:
+- Terminal Emulator (`API 22`)
+- JuiceSSH (`API 29`)
+- MT Manager (`API 26`)
 
- Note that `bindMountAppsData` to be true also requires `mPlatformCompat.isChangeEnabled(APP_DATA_DIRECTORY_ISOLATION, app.info);` to be true. After tracing it can be found that the value here is actually taken from `/etc/compatconfig`.
+
+and the results were consistent.
+
+\
+Note that `bindMountAppsData` to be true also requires `mPlatformCompat.isChangeEnabled(APP_DATA_DIRECTORY_ISOLATION, app.info);` to be true. After tracing it can be found that the value here is actually taken from `/etc/compatconfig`.
 
  The detailed source code is here:
 
@@ -217,16 +221,12 @@ This article was transcoded by [Jian Yue SimpRead](http://ksria.com/simpread/), 
  frameworks/base/services/core/java/com/android/server/compat/PlatformCompat.java
  frameworks/base/services/core/java/com/android/server/compat/CompatConfig.java
  frameworks/base/services/core/java/com/android/server/compat/CompatChange.java
-
-
  ````
 
  APP_DATA_DIRECTORY_ISOLATION is a constant `143937733`, found in `/etc/compatconfig/services-platform-compat-config.xml`:
 
  ````
  <compat-change description="Apps have no access to the private data directories of any other app, even if the other app has made them world-readable." enableAfterTargetSdk="29" />
-
-
  ````
 
  It seems that API 29 or above (in Android 11, the method here is > 29) will perform data isolation, but we can use the Magisk module to modify this, that is, replace it with a file with `enableAfterTargetSdk="0"`.
@@ -235,9 +235,11 @@ This article was transcoded by [Jian Yue SimpRead](http://ksria.com/simpread/), 
 
  Finally, let's briefly study the principle of isolation, most of which are implemented in zygote using bind mount.
 
- `frameworks/base/core/jni/com_android_internal_os_Zygote.cpp`
-
- Data isolation is actually to mount a layer of tmpfs to /data/data, then create the required directory on it, and bind and mount the original app data directory.
+ ````
+ frameworks/base/core/jni/com_android_internal_os_Zygote.cpp`
+ ````
+\
+Data isolation is actually to mount a layer of tmpfs to /data/data, then create the required directory on it, and bind and mount the original app data directory.
 
  However, some people will ask, since /data/data has been hung with a layer of tmpfs, you can't see the data directory inside, how can you bind and mount these directories?
 

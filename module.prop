@@ -4,4 +4,5 @@ version=v1.1
 versionCode=1
 author=Stillhard
 description=An attempt to block apps from accessing other apps' private data on Android 11+ (API 30+)
+support=https://github.com/stylemessiah/AppDataIsolation
 updateJson=https://raw.githubusercontent.com/stylemessiah/AppDataIsolation/main/update.json

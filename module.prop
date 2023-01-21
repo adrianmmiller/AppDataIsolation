@@ -1,0 +1,8 @@
+id=compatconfig
+name=App Data Isolation (All SDK)
+version=v1.1
+versionCode=1
+author=Stillhard
+description=An attempt to block apps from accessing other apps' private data on Android 11+ (API 30+)
+support=https://github.com/adrianmmiller/AppDataIsolation
+updateJson=https://raw.githubusercontent.com/adrianmmiller/AppDataIsolation/main/update.json

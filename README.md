@@ -1,7 +1,7 @@
 # App Data Isolation
 ## An attempt to block apps from accessing other apps' private data on Android 11+ (API 30+)
 
-Please read [WARNING](https://github.com/stylemessiah/AppDataIsolation#warning) below before installing
+Please read [WARNING](https://github.com/adrian.m.miller/AppDataIsolation#warning) below before installing
 
 This module attempts to block apps from accessing other apps' private data on Android 11+ (API 30+), using the information from the original article following this explanation of the modules actions
 

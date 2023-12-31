@@ -1,8 +1,0 @@
-id=AppDataIsolation
-name=App Data Isolation Android 11+ (API 30+)
-version=v1.1
-versionCode=1
-author=Stillhard, packaged by adrianmmiller
-description=An attempt to block apps from accessing other apps' private data on Android 11+ (API 30+)
-support=https://github.com/adrianmmiller/AppDataIsolation
-updateJson=https://raw.githubusercontent.com/adrianmmiller/AppDataIsolation/main/update.json
